@@ -11,24 +11,29 @@ import akka.util.Timeout
 import play.api.Logger
 import play.api.libs.json._
 import play.api.mvc._
+import play.api.i18n._
 
 import scala.concurrent.duration._
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * This class creates the actions and the websocket needed.
  */
 @Singleton
-class HomeController @Inject()(@Named("userParentActor") userParentActor: ActorRef,
-                               cc: ControllerComponents)
-                              (implicit ec: ExecutionContext)
-  extends AbstractController(cc) with SameOriginCheck {
+class HomeController @Inject() (@Named("userParentActor") userParentActor: ActorRef,
+                                cc: ControllerComponents, langs: Langs)(implicit ec: ExecutionContext)
+
+    extends AbstractController(cc) with SameOriginCheck with I18nSupport{
+
+  val lang: Lang = langs.availables.head
+
+  implicit val messages: Messages = MessagesImpl(lang, messagesApi)
 
   val logger = play.api.Logger(getClass)
 
   // Home page that renders template
   def index = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.index())
+    Ok(views.html.index(""))
   }
 
   /**
