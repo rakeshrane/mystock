@@ -1,0 +1,47 @@
+@(message: String, style: String = "scala")(implicit messages: MessagesProvider)
+
+@navbar(message)
+@main(message) {
+
+<div class="main">
+	<div class="container">
+
+		
+		<div class="row">
+		
+			<div class="col-md-12">
+
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">@Messages("label.line")</h3>
+					</div>
+					<div class="panel-body">
+						<div id="lineChart" class="chart-holder"></div>
+					</div>
+				</div>
+
+			</div><!-- /span12 -->
+			
+		</div><!-- /row -->
+
+		<div class="row">
+
+			<div class="col-md-12">
+			
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">@Messages("label.time")</h3>
+					</div>
+					<div class="panel-body">
+						<div id="timeSeriesChart" class="chart-holder"></div>
+					</div>
+				</div>
+
+			</div><!-- /span12 -->
+
+		</div><!-- /row -->
+
+	</div><!-- /container -->
+
+</div><!-- /main -->
+}

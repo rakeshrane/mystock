@@ -1,0 +1,45 @@
+@(message: String, style: String = "scala")(implicit messages: MessagesProvider)
+@(title: String)(content: Html)
+
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheet/main.css")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap-3.1.1/css/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap-3.1.1/css/bootstrap.min.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("bootstrap-3.1.1/js/bootstrap.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("bootstrap-3.1.1/js/bootstrap.min.js")" type="text/javascript"></script>
+		
+		<!-- HighCharts -->
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+		
+		@if(Messages("subheader.time_line") == title) {
+			<script src="@routes.Assets.at("js/timeAndLineChartHandler.js")" type="text/javascript"></script>
+		}
+
+		@if(Messages("subheader.bar_column") == title) {
+			<script src="@routes.Assets.at("js/barAndColumnChartHandler.js")" type="text/javascript"></script>
+		}
+		
+		@if(Messages("subheader.area_pie") == title){
+			<script src="@routes.Assets.at("js/pieAndAreaChartHandler.js")" type="text/javascript"></script>
+		}
+		
+		@if(Messages("subheader.bubble") == title){
+			<script src="http://code.highcharts.com/highcharts-more.js"></script>
+			<script src="@routes.Assets.at("js/bubbleChartHandler.js")" type="text/javascript"></script>
+		}
+
+</head>
+    <body>
+        @content
+    </body>
+</html>
