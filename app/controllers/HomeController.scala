@@ -25,15 +25,13 @@ class HomeController @Inject() (@Named("userParentActor") userParentActor: Actor
 
     extends AbstractController(cc) with SameOriginCheck with I18nSupport{
 
-  val lang: Lang = langs.availables.head
-
-  implicit val messages: Messages = MessagesImpl(lang, messagesApi)
+ 
 
   val logger = play.api.Logger(getClass)
 
   // Home page that renders template
   def index = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.index(""))
+    Ok(views.html.index())
   }
 
   /**

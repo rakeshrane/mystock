@@ -14,18 +14,11 @@ import scala.concurrent.{ ExecutionContext, Future }
 class Application @Inject()(component: ControllerComponents,
                                     langs: Langs) extends AbstractController(component) with I18nSupport  {
   
-  val lang: Lang = langs.availables.head
-  implicit val messages: Messages = MessagesImpl(lang, messagesApi)
+  
 
-  def index = Action { implicit request =>
-    //val messages: Messages = messagesApi.preferred(request)   // get the messages for the given request
-    //val message: String = messages("default.message")
-    
-    Ok(views.html.lineChart(Messages("subheader.time_line")))
-  }
-
+ 
   def lineChart = Action { implicit request=>
-    Ok(views.html.lineChart(Messages("subheader.time_line")))
+    Ok(views.html.lineChart())
   }
 
   /*  def columnAndBarChart = Action {

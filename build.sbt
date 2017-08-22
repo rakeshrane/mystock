@@ -1,4 +1,4 @@
-name := "play-scala-websocket-example"
+name := "mystock"
 
 version := "1.0-SNAPSHOT"
 

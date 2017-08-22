@@ -19,7 +19,7 @@ db.stockdata.aggregate(
 		{
 			$match: {
 			    "group" : "A",
-			    "date": ISODate("2017-08-20T18:30:00.000+0000") 
+			    "date": ISODate("2017-08-21T18:30:00.000+0000") 
 			}
 		},
 
